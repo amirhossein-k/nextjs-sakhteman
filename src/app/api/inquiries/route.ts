@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'نام، شماره تماس و نوع پروژه الزامی هستند' }, { status: 400 });
     }
 
-    // 1. Save to Database
     const [newInquiry] = await db.insert(inquiries).values({
       customerName: name,
       customerPhone: phone,
@@ -20,21 +19,10 @@ export async function POST(request: NextRequest) {
       description,
     }).returning();
 
-    // 2. Simulate External Messaging (Notification)
-    // In a real app, you would call an external API like Telegram, Discord Webhook, or a push service here.
-    console.log('--- NEW INQUIRY NOTIFICATION ---');
-    console.log(`From: ${name} (${phone})`);
-    console.log(`Type: ${projectType}, Area: ${area}`);
-    console.log(`Description: ${description}`);
-    console.log('--- NOTIFICATION SENT TO ADMIN CHANNEL ---');
-
-    // 3. Simulate Email (Optional - using internal log for demo)
-    console.log(`SENDING EMAIL TO admin@sazehmodern.ir: New lead from ${name}`);
-
     return NextResponse.json({
       success: true,
       inquiryId: newInquiry.id,
-      message: 'درخواست با موفقیت ثبت شد و به اطلاع مدیریت رسید.',
+      message: 'درخواست با موفقیت ثبت شد.',
     });
   } catch (error) {
     console.error('Inquiry submission error:', error);

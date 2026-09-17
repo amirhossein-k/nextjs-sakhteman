@@ -2,7 +2,6 @@ import { db } from '@/db';
 import { projects, inquiries } from '@/db/schema';
 import { desc } from 'drizzle-orm';
 import Navbar from '@/components/Navbar';
-import Link from 'next/link';
 
 export const dynamic = "force-dynamic";
 

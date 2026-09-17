@@ -75,13 +75,10 @@ export async function POST() {
 
     return NextResponse.json({
       success: true,
-      message: 'داده‌های اولیه ساختمانی با موفقیت ایجاد شدند',
+      message: 'داده‌های اولیه با موفقیت در PostgreSQL ایجاد شدند',
     });
   } catch (error) {
     console.error('Seed error:', error);
-    return NextResponse.json(
-      { error: 'خطا در ایجاد داده‌های اولیه' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'خطا در ایجاد داده‌های اولیه' }, { status: 500 });
   }
 }
