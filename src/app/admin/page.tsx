@@ -4,6 +4,8 @@ import { desc } from 'drizzle-orm';
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboard() {
   const allInquiries = await db.select().from(inquiries).orderBy(desc(inquiries.createdAt));
   const allProjects = await db.select().from(projects).orderBy(desc(projects.createdAt));

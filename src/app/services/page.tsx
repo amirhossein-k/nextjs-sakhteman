@@ -4,6 +4,8 @@ import { db } from '@/db';
 import { companyServices } from '@/db/schema';
 import Link from 'next/link';
 
+export const dynamic = "force-dynamic";
+
 export default async function ServicesPage() {
   const services = await db.select().from(companyServices);
 
